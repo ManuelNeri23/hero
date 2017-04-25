@@ -5,10 +5,10 @@ import { HttpModule } from '@angular/http';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroesComponent } from './heroes.component';
 import { DashboardComponent } from './dashboard.component';
-
+import { HeroService } from  './hero.service'
 import { AppComponent } from './app.component';
 
-import { RouterModule } from '@angular/router';
+import { AppRootingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -22,23 +22,28 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot([
-      {
-        path: 'heroes',
-        component: HeroesComponent
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-      {
-        path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-      }
-    ])
+    AppRootingModule
+    // RouterModule.forRoot([
+    //   {
+    //     path: 'heroes',
+    //     component: HeroesComponent
+    //   },
+    //   {
+    //     path: 'dashboard',
+    //     component: DashboardComponent
+    //   },
+    //   {
+    //     path: '',
+    //     redirectTo: '/dashboard',
+    //     pathMatch: 'full'
+    //   },
+    //   {
+    //     path: 'detail/:id',
+    //     component: HeroDetailComponent
+    //   }
+    // ])
   ],
-  providers: [],
+  providers: [HeroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
